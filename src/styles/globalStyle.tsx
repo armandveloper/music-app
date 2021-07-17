@@ -11,6 +11,12 @@ const GlobalStyle = createGlobalStyle`
     --text-primary: #fff;
     --primary-color: #ef5466;
     --primary-hover-color: #cb4757;
+    --divider-primary: #32323d;
+    --divider-secondary: #52525d;
+    --sidebar-background-color: var(--background-intermediate);
+    /* Layout */
+    --sidebar-width: 22rem;
+    --player-height: 8rem;
   }
   html {
     box-sizing: border-box;
