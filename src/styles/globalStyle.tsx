@@ -8,7 +8,9 @@ const GlobalStyle = createGlobalStyle`
     --background-contrast: #42424c;
     --background-elevation: #52525d;
     --color-accent: #ef5466;
+    --color-white: #fff;
     --text-primary: #fff;
+    --text-intermediate: #72727d;
     --primary-color: #ef5466;
     --primary-hover-color: #cb4757;
     --divider-primary: #32323d;

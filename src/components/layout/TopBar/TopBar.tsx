@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import TopBarSearch from './TopBarSearch';
 
 const StyledBar = styled.header`
 	background-color: var(--background-primary);
@@ -19,16 +20,12 @@ const StyledBar = styled.header`
 		width: 4rem;
 		height: 4rem;
 	}
-	.search {
-		margin-right: auto;
-		width: 60%;
-	}
 `;
 
 function TopBar() {
 	return (
 		<StyledBar>
-			<h3 className="search">Top Bar</h3>
+			<TopBarSearch />
 			<div className="menu">
 				<p>Mneu</p>
 			</div>
