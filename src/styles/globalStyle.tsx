@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     /* Layout */
     --sidebar-width: 22rem;
     --player-height: 8rem;
+    --top-bar-height: 5.6rem;
   }
   html {
     box-sizing: border-box;

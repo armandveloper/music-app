@@ -5,6 +5,7 @@ import SidebarNavItem from 'components/ui/SidebarNavItem';
 
 const StyledSidebar = styled.aside`
 	background-color: var(--sideabr-background-color);
+	border-right: 1px solid var(--divider-primary);
 	padding: 0 1.2rem;
 `;
 

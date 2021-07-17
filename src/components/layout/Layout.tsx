@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import HomePage from 'pages/HomePage';
+import MainContent from './MainContent';
 import Player from '../player/Player';
 import Sidebar from './Sidebar';
 
@@ -14,7 +14,7 @@ function Layout() {
 	return (
 		<StyledLayput>
 			<Sidebar />
-			<HomePage />
+			<MainContent />
 			<Player />
 		</StyledLayput>
 	);
