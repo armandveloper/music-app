@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { textEllipsis } from 'styles/typography';
 import AccountThumbnail from './AccountThumbnail';
 
 const StyledAccountHeader = styled.div`
@@ -21,6 +22,7 @@ const AccountHeading = styled.div`
 	flex: 1;
 	font-size: 1.6rem;
 	margin-left: 1.2rem;
+	${textEllipsis};
 `;
 
 function AccountHeader() {
