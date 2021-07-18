@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Input = styled.input`
+const TopBarSearchInput = styled.input`
 	background-color: rgba(0, 0, 0, 0);
 	border: none;
 	color: var(--text-primary);
@@ -14,14 +14,18 @@ const Input = styled.input`
 	&:focus {
 		outline: 0;
 	}
+	&:focus + *,
+	&:hover + * {
+		opacity: 1 !important;
+	}
+	& + *,
+	&:placeholder-shown + * {
+		opacity: 0 !important;
+	}
 	&::-webkit-search-cancel-button,
 	&::-webkit-search-decoration {
 		appearance: none;
 	}
 `;
-
-function TopBarSearchInput() {
-	return <Input type="search" aria-label="Search" placeholder="Search" />;
-}
 
 export default TopBarSearchInput;

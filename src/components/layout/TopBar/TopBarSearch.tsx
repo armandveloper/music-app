@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styled from 'styled-components';
 import { FiSearch } from 'react-icons/fi';
 import { MdClear } from 'react-icons/md';
@@ -15,14 +16,35 @@ const TopBarSearchForm = styled.form`
 `;
 
 function TopBarSearch() {
+	const [term, setTerm] = React.useState('');
+
+	const clearTerm = () => setTerm('');
+
+	const handleSearch = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+		console.log('Searching...');
+	};
+
 	return (
 		<StyledSearch>
-			<TopBarSearchForm>
-				<TopBarSearchSubmit title="Search">
+			<TopBarSearchForm onSubmit={handleSearch}>
+				<TopBarSearchSubmit disabled={term.length === 0} title="Search">
 					<FiSearch color="currentColor" size="16" />
 				</TopBarSearchSubmit>
-				<TopBarSearchInput />
-				<TopBarSearchClear title="Clear">
+				<TopBarSearchInput
+					aria-label="Search"
+					onChange={({ currentTarget }) =>
+						setTerm(currentTarget.value)
+					}
+					placeholder="Search"
+					type="search"
+					value={term}
+				/>
+				<TopBarSearchClear
+					isActive={term.length > 0}
+					onClick={clearTerm}
+					title="Clear"
+				>
 					<MdClear color="currentColor" size="12" />
 				</TopBarSearchClear>
 			</TopBarSearchForm>
