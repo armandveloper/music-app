@@ -1,4 +1,9 @@
+import * as React from 'react';
 import styled from 'styled-components';
+
+interface TopBarProfileProps {
+	onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
 
 const StyledTopBarProfile = styled.button`
 	background: none;
@@ -40,9 +45,9 @@ const ProfilePicture = styled.img`
 	width: 100%;
 `;
 
-function TopBarProfile() {
+function TopBarProfile({ onClick }: TopBarProfileProps) {
 	return (
-		<StyledTopBarProfile>
+		<StyledTopBarProfile onClick={onClick}>
 			<ProfilePicture
 				src="https://e-cdns-images.dzcdn.net/images/user/93b60ed3ca923636b43b8869cf880be7/32x32-000000-80-0-0.jpg"
 				alt="Armando Cruz Jaimes"

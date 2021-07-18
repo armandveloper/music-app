@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styled from 'styled-components';
 import AccountMenu from 'components/account/AccountMenu';
 import TopBarProfile from './TopBarProfile';
@@ -10,10 +11,14 @@ const StyledAction = styled.div`
 `;
 
 function TopBarAction() {
+	const [isMenuActive, setMenuActive] = React.useState(false);
+
+	const toggleMenu = () => setMenuActive(!isMenuActive);
+
 	return (
 		<StyledAction>
-			<TopBarProfile />
-			<AccountMenu />
+			<TopBarProfile onClick={toggleMenu} />
+			{isMenuActive && <AccountMenu />}
 		</StyledAction>
 	);
 }
