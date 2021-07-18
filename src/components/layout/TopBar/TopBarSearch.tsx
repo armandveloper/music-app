@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { FiSearch } from 'react-icons/fi';
 import { MdClear } from 'react-icons/md';
 import { TopBarSearchClear, TopBarSearchSubmit } from './TopBarSearchButton';
+import TopBarSearchInput from './TopBarSearchInput';
 
 const StyledSearch = styled.div`
 	margin-right: auto;
@@ -20,6 +21,7 @@ function TopBarSearch() {
 				<TopBarSearchSubmit title="Search">
 					<FiSearch color="currentColor" size="16" />
 				</TopBarSearchSubmit>
+				<TopBarSearchInput />
 				<TopBarSearchClear title="Clear">
 					<MdClear color="currentColor" size="12" />
 				</TopBarSearchClear>
