@@ -20,6 +20,8 @@ const GlobalStyle = createGlobalStyle`
     --sidebar-width: 22rem;
     --player-height: 8rem;
     --top-bar-height: 5.6rem;
+    /* Decoration */
+    --menu-shadow: 0 0.4rem 2rem 0 rgb(0, 0, 0, 0.24);
   }
   html {
     box-sizing: border-box;

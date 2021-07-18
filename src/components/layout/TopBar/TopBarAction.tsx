@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import AccountMenu from 'components/account/AccountMenu';
 import TopBarProfile from './TopBarProfile';
 
 const StyledAction = styled.div`
@@ -12,6 +13,7 @@ function TopBarAction() {
 	return (
 		<StyledAction>
 			<TopBarProfile />
+			<AccountMenu />
 		</StyledAction>
 	);
 }
