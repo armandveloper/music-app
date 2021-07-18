@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import TopBarAction from './TopBarAction';
 import TopBarSearch from './TopBarSearch';
 
 const StyledBar = styled.header`
@@ -26,9 +27,7 @@ function TopBar() {
 	return (
 		<StyledBar>
 			<TopBarSearch />
-			<div className="menu">
-				<p>Mneu</p>
-			</div>
+			<TopBarAction />
 		</StyledBar>
 	);
 }
