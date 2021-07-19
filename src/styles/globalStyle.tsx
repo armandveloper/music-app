@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { customScrollbar } from './scrollbar';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -39,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     margin: 0;
   }
+  ${customScrollbar};
 `;
 
 export default GlobalStyle;
