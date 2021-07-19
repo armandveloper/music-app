@@ -10,7 +10,7 @@ const List = styled.ul`
 function AccountMenuList() {
 	return (
 		<List>
-			<AccountItem>Sign out</AccountItem>
+			<AccountItem>Sign Out</AccountItem>
 		</List>
 	);
 }

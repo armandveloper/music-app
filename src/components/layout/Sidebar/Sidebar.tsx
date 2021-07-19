@@ -10,7 +10,7 @@ interface SidebarProps {
 }
 
 const StyledSidebar = styled.aside<SidebarProps>`
-	background-color: var(--sideabr-background-color);
+	background-color: var(--sidebar-background-color);
 	border-right: 1px solid var(--divider-primary);
 	bottom: 0;
 	left: 0;

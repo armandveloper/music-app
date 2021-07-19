@@ -6,8 +6,11 @@ import Sidebar from './Sidebar';
 const StyledLayput = styled.div`
 	height: 100vh;
 	display: grid;
-	grid-template-columns: var(--sidebar-width) 1fr;
+	grid-template-columns: 1fr;
 	grid-template-rows: calc(100vh - var(--player-height)) var(--player-height);
+	@media (min-width: 62em) {
+		grid-template-columns: var(--sidebar-width) 1fr;
+	}
 `;
 
 function Layout() {

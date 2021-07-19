@@ -8,12 +8,17 @@ const AccountItem = styled.li`
 	cursor: pointer;
 	display: flex;
 	font-size: 1.4rem;
-	margin: 0 0.8rem;
-	padding: 1.2rem;
+	margin: 0 0.4rem;
+	padding: 1.2rem 0.6rem;
+	user-select: none;
 	transition-duration: 0.15s;
 	transition-property: background-color;
 	&:hover {
 		background-color: var(--background-contrast);
+	}
+	@media (min-width: 62em) {
+		margin: 0 0.8rem;
+		padding: 1.2rem;
 	}
 `;
 

@@ -8,12 +8,15 @@ const StyledAccountHeader = styled.div`
 	color: var(--text-primary);
 	cursor: default;
 	display: flex;
-	padding: 1.2rem 2rem;
+	padding: 1.2rem 1rem;
 	user-select: none;
 	transition-duration: 0.15s;
 	transition-property: background-color;
 	&:hover {
 		background-color: var(--background-contrast);
+	}
+	@media (min-width: 62em) {
+		padding: 1.2rem 2rem;
 	}
 `;
 

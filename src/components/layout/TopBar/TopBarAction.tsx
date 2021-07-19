@@ -18,7 +18,7 @@ function TopBarAction() {
 	return (
 		<StyledAction>
 			<TopBarProfile onClick={toggleMenu} />
-			{isMenuActive && <AccountMenu />}
+			<AccountMenu isActive={isMenuActive} />
 		</StyledAction>
 	);
 }
