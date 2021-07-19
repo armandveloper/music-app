@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PlayerLeft from './PlayerLeft';
 import PlayerProgress from './PlayerProgress';
+import PlayerRight from './PlayerRight';
 
 const StyledPlayer = styled.div`
 	background-color: var(--background-secondary);
@@ -24,43 +25,7 @@ function Player() {
 		<StyledPlayer>
 			<PlayerLeft />
 			<PlayerProgress />
-
-			{/* <div className="player__progress">
-				<span className="player__progress-time">
-					{minutesProg}:
-					{secondsProg < 10 ? '0' + secondsProg : secondsProg}
-				</span>
-				<input
-					className="player__progress-bar"
-					type="range"
-					name="progressSong"
-					min="0"
-					max="100"
-					step="0.1"
-					value={progressSong}
-					onChange={handleProgressSong}
-				/>
-
-				<span className="player__duration">
-					{minutes}:{seconds}
-				</span>
-			</div>
-			<div className="player__right">
-				<button
-					className="player__btn"
-					title={
-						isFavorite ? 'Delete from favorite' : 'Add to favorite'
-					}
-					onClick={handleFavorite}
-				>
-					<Heart
-						style={{
-							stroke: isFavorite ? 'none' : '#fff',
-							fill: isFavorite ? '#e94267' : 'none',
-						}}
-					/>
-				</button>
-			</div> */}
+			<PlayerRight />
 		</StyledPlayer>
 	);
 }
