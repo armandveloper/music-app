@@ -8,17 +8,16 @@ const StyledBar = styled.header`
 	border-bottom: 1px solid var(--divider-primary);
 	display: flex;
 	height: var(--top-bar-height);
-	margin-top: 4.5rem;
+	left: 0;
 	padding: 0 1.2rem;
-	@media (min-width: 92em) {
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 200;
+	@media (min-width: 62em) {
 		left: var(--sidebar-width);
-		margin-top: 0;
 		min-width: 77rem;
 		padding: 0 2.4rem;
-		position: fixed;
-		right: 0;
-		top: 0;
-		z-index: 200;
 	}
 `;
 
