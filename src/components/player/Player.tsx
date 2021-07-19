@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PlayerLeft from './PlayerLeft';
+import PlayerProgress from './PlayerProgress';
 
 const StyledPlayer = styled.div`
 	background-color: var(--background-secondary);
@@ -22,6 +23,7 @@ function Player() {
 	return (
 		<StyledPlayer>
 			<PlayerLeft />
+			<PlayerProgress />
 
 			{/* <div className="player__progress">
 				<span className="player__progress-time">
