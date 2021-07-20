@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { MdPlayArrow } from 'react-icons/md';
 import BasePlayer, { BasePlayerProps } from './BasePlayer';
 import PlayerMediaThumbnail from './PlayerMediaThumbnail';
+import PlayerMobileExpanded from './PlayerMobileExpanded';
 
 const PlayerFixed = styled(BasePlayer)`
 	bottom: 0;
@@ -48,6 +49,7 @@ const PlayerControl = styled.button`
 `;
 
 function PlayerMobileCollapsed(props: BasePlayerProps) {
+	return <PlayerMobileExpanded {...props} />;
 	return (
 		<PlayerFixed>
 			<PlayerCollapsedProgress />
