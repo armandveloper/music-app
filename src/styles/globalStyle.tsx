@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     --color-white: #fff;
     --text-primary: #fff;
     --text-intermediate: #72727d;
+    --text-secondary: #92929d;
     --primary-color: #ef5466;
     --primary-hover-color: #cb4757;
     --divider-primary: #32323d;
@@ -21,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     --sidebar-width: 22rem;
     --player-height: 8rem;
     --top-bar-height: 5.6rem;
+    --slider-height: 2px;
     /* Decoration */
     --menu-shadow: 0 0.4rem 2rem 0 rgb(0, 0, 0, 0.24);
   }

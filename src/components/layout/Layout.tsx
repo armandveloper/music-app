@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import MainContent from './MainContent';
-import Player from '../player/Player';
+import Player from './Player';
 import Sidebar from './Sidebar';
 import TopBar from './TopBar';
 
