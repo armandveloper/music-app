@@ -1,32 +1,24 @@
-import styled from 'styled-components';
-import PlayerLeft from './PlayerLeft';
-import PlayerProgress from './PlayerProgress';
-import PlayerRight from './PlayerRight';
+import * as React from 'react';
+import { BasePlayerProps } from './BasePlayer';
+import PlayerDesktop from './PlayerDesktop';
+import PlayerMobileCollapsed from './PlayerMobileCollapsed';
 
-const StyledPlayer = styled.div`
-	background-color: var(--background-secondary);
-	border-top: 1px solid var(--divider-primary);
-	bottom: 0;
-	grid-column: 1 / -1;
-	left: 0;
-	padding: 2rem 2.4rem;
-	position: fixed;
-	right: 0;
-	@media (min-width: 62em) {
-		position: unset;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-`;
+function Player(props: BasePlayerProps) {
+	const mql: MediaQueryList = window.matchMedia('(min-width: 62em)');
+	const [isDesktop, setDesktop] = React.useState(mql.matches);
 
-function Player() {
-	return (
-		<StyledPlayer>
-			<PlayerLeft />
-			<PlayerProgress />
-			<PlayerRight />
-		</StyledPlayer>
+	React.useEffect(() => {
+		const updateScreenType = (e: MediaQueryListEvent) =>
+			setDesktop(e.matches);
+		mql.addEventListener('change', updateScreenType);
+
+		return () => mql.removeEventListener('change', updateScreenType);
+	}, [mql]);
+
+	return isDesktop ? (
+		<PlayerDesktop {...props} />
+	) : (
+		<PlayerMobileCollapsed {...props} />
 	);
 }
 

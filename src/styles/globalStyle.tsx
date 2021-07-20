@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     /* Layout */
     --sidebar-width: 22rem;
     --player-height: 8rem;
+    --player-mobile-height: 5rem;
     --top-bar-height: 5.6rem;
     --slider-height: 2px;
     /* Decoration */

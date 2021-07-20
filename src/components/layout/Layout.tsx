@@ -21,7 +21,12 @@ function Layout() {
 			<TopBar />
 			<Sidebar />
 			<MainContent />
-			<Player />
+			<Player
+				albumTitle="Austin & Ally: Turn It Up (Soundtrack from the TV Series)"
+				artistName="Ross Lynch"
+				cover="https://cdns-images.dzcdn.net/images/cover/ade5b912ca9ee6caa282afe55c90becd/56x56-000000-80-0-0.jpg"
+				mediaTitle="Steal Your Heart"
+			/>
 		</StyledLayput>
 	);
 }

@@ -1,20 +1,6 @@
 import styled from 'styled-components';
-
-interface PlayerMediaInfoProps {
-	albumTitle: string;
-	artistName: string;
-	cover: string;
-	mediaTitle: string;
-}
-
-const AlbumCover = styled.img`
-	border-radius: 50%;
-	grid-row: 1 / -1;
-	height: 5rem;
-	margin-right: 2rem;
-	object-fit: cover;
-	width: 5rem;
-`;
+import { BasePlayerProps } from './BasePlayer';
+import PlayerMediaThumbnail from './PlayerMediaThumbnail';
 
 const PlayerSongArtist = styled.span`
 	grid-column: 2;
@@ -27,10 +13,10 @@ function PlayerMediaInfo({
 	artistName,
 	cover,
 	mediaTitle,
-}: PlayerMediaInfoProps) {
+}: BasePlayerProps) {
 	return (
 		<>
-			<AlbumCover src={cover} alt={albumTitle} />
+			<PlayerMediaThumbnail circle={true} src={cover} alt={albumTitle} />
 			<span>{mediaTitle}</span>
 			<PlayerSongArtist>{artistName}</PlayerSongArtist>
 		</>
