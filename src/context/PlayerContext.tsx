@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface IPlayerContext {
+export interface IBasePlayer {
 	album: {
 		cover: string;
 		coverMedium: string;
@@ -11,13 +11,17 @@ export interface IPlayerContext {
 	};
 	id: number;
 	isPlaying: boolean;
-	duration: number;
+	duration: number | string;
 	title: string;
+}
+
+export interface IPlayerContext extends IBasePlayer {
+	isDesktop: boolean;
 }
 
 interface PlayerProviderProps {
 	children?: React.ReactNode;
-	currentMedia: IPlayerContext;
+	currentMedia: IBasePlayer;
 }
 
 const PlayerContext = React.createContext({} as IPlayerContext);
@@ -26,8 +30,24 @@ export const PlayerProvider = ({
 	currentMedia,
 	children,
 }: PlayerProviderProps) => {
+	const mql: MediaQueryList = window.matchMedia('(min-width: 62em)');
+	const [isDesktop, setDesktop] = React.useState(mql.matches);
+
+	React.useEffect(() => {
+		const updateScreenType = (e: MediaQueryListEvent) =>
+			setDesktop(e.matches);
+		mql.addEventListener('change', updateScreenType);
+
+		return () => mql.removeEventListener('change', updateScreenType);
+	}, [mql]);
+
+	const value = {
+		...currentMedia,
+		isDesktop,
+	};
+
 	return (
-		<PlayerContext.Provider value={currentMedia}>
+		<PlayerContext.Provider value={value}>
 			{children}
 		</PlayerContext.Provider>
 	);
