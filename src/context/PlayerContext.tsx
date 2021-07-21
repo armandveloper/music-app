@@ -1,5 +1,6 @@
 import * as React from 'react';
-import useMatchMedia from 'hooks/useMacthMedia';
+import useMatchMedia from 'hooks/useMatchMedia';
+import useMobilePlayer from 'hooks/useMobilePlayer';
 
 export interface IBasePlayer {
 	album: {
@@ -37,13 +38,8 @@ export const PlayerProvider = ({
 }: PlayerProviderProps) => {
 	const isDesktop = useMatchMedia('(min-width: 62em)');
 
-	const [isExpanded, setExpanded] = React.useState(false);
-
-	const contract = () => setExpanded(false);
-
-	const expand = () => setExpanded(true);
-
-	const toggleExpanded = () => setExpanded(!isExpanded);
+	const [isExpanded, contract, expand, toggleExpanded] =
+		useMobilePlayer(false);
 
 	const value = {
 		...currentMedia,
