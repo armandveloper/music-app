@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { BasePlayerProps } from './BasePlayer';
+import { IPlayerContext, usePlayerContext } from 'context/PlayerContext';
 import PlayerDesktop from './PlayerDesktop';
 import PlayerMobileCollapsed from './PlayerMobileCollapsed';
 
-function Player(props: BasePlayerProps) {
+export interface PlayerProps extends IPlayerContext {}
+
+function Player() {
 	const mql: MediaQueryList = window.matchMedia('(min-width: 62em)');
 	const [isDesktop, setDesktop] = React.useState(mql.matches);
 
@@ -15,10 +17,12 @@ function Player(props: BasePlayerProps) {
 		return () => mql.removeEventListener('change', updateScreenType);
 	}, [mql]);
 
+	const player = usePlayerContext();
+
 	return isDesktop ? (
-		<PlayerDesktop {...props} />
+		<PlayerDesktop {...player} />
 	) : (
-		<PlayerMobileCollapsed {...props} />
+		<PlayerMobileCollapsed {...player} />
 	);
 }
 

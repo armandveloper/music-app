@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import BasePlayer, { BasePlayerProps } from './BasePlayer';
+import { PlayerProps } from './Player';
+import BasePlayer from './BasePlayer';
 import PlayerLeft from './PlayerLeft';
 import PlayerProgress from './PlayerProgress';
 import PlayerRight from './PlayerRight';
@@ -14,7 +15,7 @@ const StyledPlayerDesktop = styled(BasePlayer)`
 	position: unset;
 `;
 
-function PlayerDesktop(props: BasePlayerProps) {
+function PlayerDesktop(props: PlayerProps) {
 	return (
 		<StyledPlayerDesktop>
 			<PlayerLeft {...props} />

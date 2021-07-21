@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BasePlayerProps } from './BasePlayer';
+import { PlayerProps } from './Player';
 import PlayerControls from './PlayerControls';
 import PlayerMediaInfo from './PlayerMediaInfo';
 
@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
 	grid-template-rows: repeat(2, auto);
 `;
 
-function PlayerLeft(props: BasePlayerProps) {
+function PlayerLeft(props: PlayerProps) {
 	return (
 		<StyledWrapper>
 			<PlayerMediaInfo {...props} />

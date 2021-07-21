@@ -3,12 +3,13 @@ import {
 	MdChevronLeft,
 	MdChevronRight,
 	MdExpandMore,
+	MdPause,
 	MdPlayArrow,
 } from 'react-icons/md';
 import styled from 'styled-components';
-import { BasePlayerProps } from '../BasePlayer';
-import { textEllipsis } from 'styles/typography';
+import { PlayerProps } from '../Player';
 import Slider from 'components/ui/Slider';
+import { textEllipsis } from 'styles/typography';
 
 const StyledPlayerExpanded = styled.div`
 	background-color: var(--background-elevation);
@@ -101,7 +102,13 @@ const Controls = styled.div`
 	justify-content: center;
 `;
 
-function PlayerMobileExpanded(props: BasePlayerProps) {
+function PlayerMobileExpanded({
+	album,
+	artist,
+	duration,
+	isPlaying,
+	title,
+}: PlayerProps) {
 	const [progress, setProgress] = React.useState(0);
 
 	return (
@@ -111,13 +118,13 @@ function PlayerMobileExpanded(props: BasePlayerProps) {
 					<MdExpandMore color="var(--text-primary)" size="24" />
 					<TopTextWrapper>
 						<TopText>Playing song from album</TopText>
-						<TopTextBold>{props.albumTitle}</TopTextBold>
+						<TopTextBold>{album.title}</TopTextBold>
 					</TopTextWrapper>
 				</PlayerTop>
-				<AlbumCover src={props.cover} alt={props.albumTitle} />
+				<AlbumCover src={album.coverMedium} alt={album.title} />
 				<MediaInfo>
-					<MediaTitle>{props.mediaTitle}</MediaTitle>
-					<MediaArtist>{props.artistName}</MediaArtist>
+					<MediaTitle>{title}</MediaTitle>
+					<MediaArtist>{artist.name}</MediaArtist>
 				</MediaInfo>
 				<ProgressWrapper>
 					<Slider
@@ -133,18 +140,29 @@ function PlayerMobileExpanded(props: BasePlayerProps) {
 					/>
 					<PlayerProgressTimestampsWrapper>
 						<span>0:00</span>
-						<span>3:21</span>
+						<span>{duration}</span>
 					</PlayerProgressTimestampsWrapper>
 				</ProgressWrapper>
 				<Controls>
 					<MdChevronLeft color="var(--text-primary)" size="36" />
-					<MdPlayArrow
-						style={{
-							margin: '0 2rem',
-						}}
-						color="var(--text-primary)"
-						size="48"
-					/>
+					{isPlaying ? (
+						<MdPause
+							style={{
+								margin: '0 2rem',
+							}}
+							color="var(--text-primary)"
+							size="48"
+						/>
+					) : (
+						<MdPlayArrow
+							style={{
+								margin: '0 2rem',
+							}}
+							color="var(--text-primary)"
+							size="48"
+						/>
+					)}
+
 					<MdChevronRight color="var(--text-primary)" size="36" />
 				</Controls>
 			</Content>

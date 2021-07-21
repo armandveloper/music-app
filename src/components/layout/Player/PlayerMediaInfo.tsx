@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BasePlayerProps } from './BasePlayer';
+import { PlayerProps } from './Player';
 import PlayerMediaThumbnail from './PlayerMediaThumbnail';
 
 const PlayerSongArtist = styled.span`
@@ -8,17 +8,16 @@ const PlayerSongArtist = styled.span`
 	margin-right: 8rem;
 `;
 
-function PlayerMediaInfo({
-	albumTitle,
-	artistName,
-	cover,
-	mediaTitle,
-}: BasePlayerProps) {
+function PlayerMediaInfo({ album, artist, title }: PlayerProps) {
 	return (
 		<>
-			<PlayerMediaThumbnail circle={true} src={cover} alt={albumTitle} />
-			<span>{mediaTitle}</span>
-			<PlayerSongArtist>{artistName}</PlayerSongArtist>
+			<PlayerMediaThumbnail
+				circle={true}
+				src={album.cover}
+				alt={album.title}
+			/>
+			<span>{title}</span>
+			<PlayerSongArtist>{artist.name}</PlayerSongArtist>
 		</>
 	);
 }

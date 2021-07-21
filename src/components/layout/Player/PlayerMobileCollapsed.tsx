@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { MdPlayArrow } from 'react-icons/md';
-import BasePlayer, { BasePlayerProps } from './BasePlayer';
+import { PlayerProps } from './Player';
+import BasePlayer from './BasePlayer';
 import PlayerMediaThumbnail from './PlayerMediaThumbnail';
 import PlayerMobileExpanded from './PlayerMobileExpanded';
 
@@ -48,19 +49,19 @@ const PlayerControl = styled.button`
 	-webkit-tap-highlight-color: transparent;
 `;
 
-function PlayerMobileCollapsed(props: BasePlayerProps) {
+function PlayerMobileCollapsed(props: PlayerProps) {
 	return <PlayerMobileExpanded {...props} />;
 	return (
 		<PlayerFixed>
 			<PlayerCollapsedProgress />
 			<StyledCollapsed>
 				<PlayerMediaThumbnail
-					src={props.cover}
-					alt={props.albumTitle}
+					src={props.album.cover}
+					alt={props.album.title}
 				/>
 				<MediaTextWrapper>
-					<MediaTitle>{props.mediaTitle}</MediaTitle>
-					<ArtistName>{props.artistName}</ArtistName>
+					<MediaTitle>{props.title}</MediaTitle>
+					<ArtistName>{props.artist.name}</ArtistName>
 				</MediaTextWrapper>
 				<PlayerControl>
 					<MdPlayArrow color="currentColor" size="28" />

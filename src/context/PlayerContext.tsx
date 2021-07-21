@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface IPlayerContext {
+export interface IPlayerContext {
 	album: {
 		cover: string;
 		coverMedium: string;
@@ -9,6 +9,7 @@ interface IPlayerContext {
 	artist: {
 		name: string;
 	};
+	id: number;
 	isPlaying: boolean;
 	duration: number;
 	title: string;
