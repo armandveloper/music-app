@@ -8,14 +8,18 @@ import {
 } from 'react-icons/md';
 import styled from 'styled-components';
 import { PlayerProps } from '../Player';
+import PlayerMobileTiny from '../PlayerMobileTiny';
 import Slider from 'components/ui/Slider';
 import { textEllipsis } from 'styles/typography';
+import { toggleMobilePlayerMixin } from 'styles/player';
 
 interface PlayerMobileExpandedProps extends PlayerProps {
 	contract: () => void;
+	expand: () => void;
+	isActive: boolean;
 }
 
-const StyledPlayerExpanded = styled.div`
+const StyledPlayerExpanded = styled.div<{ isActive: boolean }>`
 	background-color: var(--background-elevation);
 	bottom: 0;
 	color: #fff;
@@ -26,6 +30,7 @@ const StyledPlayerExpanded = styled.div`
 	right: 0;
 	top: 0;
 	z-index: 100000;
+	${toggleMobilePlayerMixin};
 `;
 
 const Content = styled.div`
@@ -111,13 +116,42 @@ function PlayerMobileExpanded({
 	artist,
 	contract,
 	duration,
+	expand,
+	id,
+	isActive,
 	isPlaying,
 	title,
 }: PlayerMobileExpandedProps) {
+	const [shouldRender, setRender] = React.useState(isActive);
+
+	React.useEffect(() => {
+		if (isActive) setRender(true);
+	}, [isActive]);
+
+	const handleAnimationEnd = () => {
+		if (!isActive) setRender(false);
+	};
+
 	const [progress, setProgress] = React.useState(0);
 
+	if (!shouldRender)
+		return (
+			<PlayerMobileTiny
+				album={album}
+				artist={artist}
+				duration={duration}
+				expand={expand}
+				id={id}
+				isPlaying={isPlaying}
+				title={title}
+			/>
+		);
+
 	return (
-		<StyledPlayerExpanded>
+		<StyledPlayerExpanded
+			isActive={isActive}
+			onAnimationEnd={handleAnimationEnd}
+		>
 			<Content>
 				<PlayerTop>
 					<MdExpandMore

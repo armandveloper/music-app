@@ -1,7 +1,6 @@
 import { IBasePlayer, usePlayerContext } from 'context/PlayerContext';
 import PlayerDesktop from './PlayerDesktop';
 import PlayerMobileExpanded from './PlayerMobileExpanded';
-import PlayerMobileTiny from './PlayerMobileTiny';
 
 export interface PlayerProps extends IBasePlayer {}
 
@@ -19,10 +18,13 @@ function Player() {
 
 	return isDesktop ? (
 		<PlayerDesktop {...baseProps} />
-	) : isExpanded ? (
-		<PlayerMobileExpanded {...baseProps} contract={contract} />
 	) : (
-		<PlayerMobileTiny {...baseProps} expand={expand} />
+		<PlayerMobileExpanded
+			{...baseProps}
+			contract={contract}
+			expand={expand}
+			isActive={isExpanded}
+		/>
 	);
 }
 
