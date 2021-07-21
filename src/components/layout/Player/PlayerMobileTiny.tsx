@@ -3,7 +3,10 @@ import { MdPlayArrow } from 'react-icons/md';
 import { PlayerProps } from './Player';
 import BasePlayer from './BasePlayer';
 import PlayerMediaThumbnail from './PlayerMediaThumbnail';
-import PlayerMobileExpanded from './PlayerMobileExpanded';
+
+interface PlayerMobileTinyProps extends PlayerProps {
+	expand: () => void;
+}
 
 const PlayerFixed = styled(BasePlayer)`
 	bottom: 0;
@@ -13,13 +16,13 @@ const PlayerFixed = styled(BasePlayer)`
 	right: 0;
 `;
 
-const StyledCollapsed = styled(BasePlayer)`
+const StyledTiny = styled(BasePlayer)`
 	align-items: center;
 	display: flex;
 	height: var(--player-mobile-height);
 `;
 
-const PlayerCollapsedProgress = styled.div`
+const PlayerTinyProgress = styled.div`
 	background-color: var(--color-accent);
 	height: var(--slider-height);
 	will-change: width;
@@ -49,12 +52,11 @@ const PlayerControl = styled.button`
 	-webkit-tap-highlight-color: transparent;
 `;
 
-function PlayerMobileCollapsed(props: PlayerProps) {
-	return <PlayerMobileExpanded {...props} />;
+function PlayerMobileTiny(props: PlayerMobileTinyProps) {
 	return (
 		<PlayerFixed>
-			<PlayerCollapsedProgress />
-			<StyledCollapsed>
+			<PlayerTinyProgress />
+			<StyledTiny onClick={props.expand}>
 				<PlayerMediaThumbnail
 					src={props.album.cover}
 					alt={props.album.title}
@@ -66,9 +68,9 @@ function PlayerMobileCollapsed(props: PlayerProps) {
 				<PlayerControl>
 					<MdPlayArrow color="currentColor" size="28" />
 				</PlayerControl>
-			</StyledCollapsed>
+			</StyledTiny>
 		</PlayerFixed>
 	);
 }
 
-export default PlayerMobileCollapsed;
+export default PlayerMobileTiny;

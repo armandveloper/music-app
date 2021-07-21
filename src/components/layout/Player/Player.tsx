@@ -1,17 +1,28 @@
-import * as React from 'react';
-import { IPlayerContext, usePlayerContext } from 'context/PlayerContext';
+import { IBasePlayer, usePlayerContext } from 'context/PlayerContext';
 import PlayerDesktop from './PlayerDesktop';
-import PlayerMobileCollapsed from './PlayerMobileCollapsed';
+import PlayerMobileExpanded from './PlayerMobileExpanded';
+import PlayerMobileTiny from './PlayerMobileTiny';
 
-export interface PlayerProps extends IPlayerContext {}
+export interface PlayerProps extends IBasePlayer {}
 
 function Player() {
 	const player = usePlayerContext();
 
-	return player.isDesktop ? (
-		<PlayerDesktop {...player} />
+	const {
+		contract,
+		expand,
+		isDesktop,
+		isExpanded,
+		toggleExpanded,
+		...baseProps
+	} = player;
+
+	return isDesktop ? (
+		<PlayerDesktop {...baseProps} />
+	) : isExpanded ? (
+		<PlayerMobileExpanded {...baseProps} contract={contract} />
 	) : (
-		<PlayerMobileCollapsed {...player} />
+		<PlayerMobileTiny {...baseProps} expand={expand} />
 	);
 }
 

@@ -11,6 +11,10 @@ import { PlayerProps } from '../Player';
 import Slider from 'components/ui/Slider';
 import { textEllipsis } from 'styles/typography';
 
+interface PlayerMobileExpandedProps extends PlayerProps {
+	contract: () => void;
+}
+
 const StyledPlayerExpanded = styled.div`
 	background-color: var(--background-elevation);
 	bottom: 0;
@@ -105,17 +109,22 @@ const Controls = styled.div`
 function PlayerMobileExpanded({
 	album,
 	artist,
+	contract,
 	duration,
 	isPlaying,
 	title,
-}: PlayerProps) {
+}: PlayerMobileExpandedProps) {
 	const [progress, setProgress] = React.useState(0);
 
 	return (
 		<StyledPlayerExpanded>
 			<Content>
 				<PlayerTop>
-					<MdExpandMore color="var(--text-primary)" size="24" />
+					<MdExpandMore
+						onClick={contract}
+						color="var(--text-primary)"
+						size="24"
+					/>
 					<TopTextWrapper>
 						<TopText>Playing song from album</TopText>
 						<TopTextBold>{album.title}</TopTextBold>

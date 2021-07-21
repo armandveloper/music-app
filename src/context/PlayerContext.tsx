@@ -18,6 +18,10 @@ export interface IBasePlayer {
 
 export interface IPlayerContext extends IBasePlayer {
 	isDesktop: boolean;
+	isExpanded: boolean;
+	contract: () => void;
+	expand: () => void;
+	toggleExpanded: () => void;
 }
 
 interface PlayerProviderProps {
@@ -33,9 +37,21 @@ export const PlayerProvider = ({
 }: PlayerProviderProps) => {
 	const isDesktop = useMatchMedia('(min-width: 62em)');
 
+	const [isExpanded, setExpanded] = React.useState(false);
+
+	const contract = () => setExpanded(false);
+
+	const expand = () => setExpanded(true);
+
+	const toggleExpanded = () => setExpanded(!isExpanded);
+
 	const value = {
 		...currentMedia,
 		isDesktop,
+		isExpanded,
+		contract,
+		expand,
+		toggleExpanded,
 	};
 
 	return (
