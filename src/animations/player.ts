@@ -18,7 +18,7 @@ export const contractPlayerAnimation = keyframes`
   }
 `;
 
-export const textMovingAnimation = `
+export const textMovingAnimation = keyframes`
   0% {
     transform: translate3d(0, 0, 0);
   }

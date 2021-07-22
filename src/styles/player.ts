@@ -18,7 +18,6 @@ export const playerMarqueeMixin = css<{
 	pixelPerSec: number;
 }>`
 	animation: ${({ contentWidth, pixelPerSec }) =>
-		`${
-			contentWidth / pixelPerSec
-		}s linear 0s infinite normal none running ${textMovingAnimation}`};
+			`${contentWidth / pixelPerSec}s`}
+		linear 0s infinite normal none running ${textMovingAnimation};
 `;

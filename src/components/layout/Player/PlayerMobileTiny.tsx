@@ -1,8 +1,10 @@
+import * as React from 'react';
 import styled from 'styled-components';
 import { MdPlayArrow } from 'react-icons/md';
 import { PlayerProps } from './Player';
 import BasePlayer from './BasePlayer';
 import PlayerMediaThumbnail from './PlayerMediaThumbnail';
+import { playerMarqueeMixin } from 'styles/player';
 
 interface PlayerMobileTinyProps extends PlayerProps {
 	expand: () => void;
@@ -32,6 +34,43 @@ const PlayerTinyProgress = styled.div`
 const MediaTextWrapper = styled.div`
 	margin-right: auto;
 	width: 60%;
+	height: 100%;
+`;
+
+const MarqueeWrapper = styled.div`
+	mask: linear-gradient(
+		to right,
+		transparent 0%,
+		rgb(0, 0, 0) 10px,
+		rgb(0, 0, 0) calc(100% - 10px),
+		transparent 100%
+	);
+	overflow: hidden;
+	position: relative;
+	height: 50%;
+`;
+
+const MarqueeText = styled.div<{
+	contentSpacing: number; // = 20
+	contentWidth: number; // dynamic
+	edgeMaskWidth: number; // = 10
+	pixelPerSec: number; // = 30
+}>`
+	display: block;
+	position: absolute;
+	width: ${({ contentSpacing, contentWidth, edgeMaskWidth }) =>
+		`${contentSpacing + contentWidth + edgeMaskWidth}px`};
+	height: 100%;
+	left: ${({ edgeMaskWidth }) => `${edgeMaskWidth}px`};
+	padding-right: ${({ contentSpacing }) => `${contentSpacing}px`};
+	${playerMarqueeMixin};
+	&:last-child {
+		width: ${({ contentSpacing, contentWidth }) =>
+			`${contentSpacing + contentWidth}px`};
+		padding-right: ${({ contentSpacing }) => `${contentSpacing}px`};
+		left: ${({ contentSpacing, contentWidth, edgeMaskWidth }) =>
+			`${contentSpacing + contentWidth + edgeMaskWidth}px`};
+	}
 `;
 
 const MediaTitle = styled.span`
@@ -53,6 +92,24 @@ const PlayerControl = styled.button`
 `;
 
 function PlayerMobileTiny(props: PlayerMobileTinyProps) {
+	const titleRef = React.useRef<HTMLDivElement>(null!);
+	const albumNameRef = React.useRef<HTMLDivElement>(null!);
+	const [marqueeContentWidth, setContentWidth] = React.useState<number[]>([]);
+	const contentSpacing: number = 20; // = 20
+	const edgeMaskWidth: number = 10; // = 10
+	const pixelPerSec: number = 30; // = 30
+
+	React.useEffect(() => {
+		console.log(
+			titleRef.current.scrollWidth,
+			albumNameRef.current.scrollWidth
+		);
+		setContentWidth([
+			titleRef.current.scrollWidth - contentSpacing,
+			albumNameRef.current.scrollWidth - contentSpacing,
+		]);
+	}, []);
+
 	return (
 		<PlayerFixed>
 			<PlayerTinyProgress />
@@ -62,8 +119,50 @@ function PlayerMobileTiny(props: PlayerMobileTinyProps) {
 					alt={props.album.title}
 				/>
 				<MediaTextWrapper>
-					<MediaTitle>{props.title}</MediaTitle>
-					<ArtistName>{props.artist.name}</ArtistName>
+					<MarqueeWrapper ref={titleRef}>
+						<MarqueeText
+							contentSpacing={contentSpacing}
+							contentWidth={marqueeContentWidth[0]}
+							edgeMaskWidth={edgeMaskWidth}
+							pixelPerSec={pixelPerSec}
+						>
+							<MediaTitle>
+								You Can Come to Me - From "Austin & Ally"
+							</MediaTitle>
+						</MarqueeText>
+						<MarqueeText
+							contentSpacing={contentSpacing}
+							contentWidth={marqueeContentWidth[0]}
+							edgeMaskWidth={edgeMaskWidth}
+							pixelPerSec={pixelPerSec}
+						>
+							<MediaTitle>
+								You Can Come to Me - From "Austin & Ally"
+							</MediaTitle>
+						</MarqueeText>
+					</MarqueeWrapper>
+					<MarqueeWrapper ref={albumNameRef}>
+						<MarqueeText
+							contentSpacing={contentSpacing}
+							contentWidth={marqueeContentWidth[1]}
+							edgeMaskWidth={edgeMaskWidth}
+							pixelPerSec={pixelPerSec}
+						>
+							<ArtistName>
+								You Can Come to Me - From "Austin & Ally"
+							</ArtistName>
+						</MarqueeText>
+						<MarqueeText
+							contentSpacing={contentSpacing}
+							contentWidth={marqueeContentWidth[1]}
+							edgeMaskWidth={edgeMaskWidth}
+							pixelPerSec={pixelPerSec}
+						>
+							<ArtistName>
+								You Can Come to Me - From "Austin & Ally"
+							</ArtistName>
+						</MarqueeText>
+					</MarqueeWrapper>
 				</MediaTextWrapper>
 				<PlayerControl>
 					<MdPlayArrow color="currentColor" size="28" />
