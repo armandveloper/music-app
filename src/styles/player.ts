@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 import {
 	contractPlayerAnimation,
 	expandPlayerAnimation,
+	textMovingAnimation,
 } from 'animations/player';
 
 export const toggleMobilePlayerMixin = css<{ isActive: boolean }>`
@@ -10,4 +11,14 @@ export const toggleMobilePlayerMixin = css<{ isActive: boolean }>`
 		isActive ? expandPlayerAnimation : contractPlayerAnimation};
 	animation-timing-function: ease-in;
 	animation-fill-mode: forwards;
+`;
+
+export const playerMarqueeMixin = css<{
+	contentWidth: number;
+	pixelPerSec: number;
+}>`
+	animation: ${({ contentWidth, pixelPerSec }) =>
+		`${
+			contentWidth / pixelPerSec
+		}s linear 0s infinite normal none running ${textMovingAnimation}`};
 `;

@@ -17,3 +17,15 @@ export const contractPlayerAnimation = keyframes`
     transform: translate3d(0, 100%, 0);
   }
 `;
+
+export const textMovingAnimation = `
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+`;
